@@ -2,12 +2,14 @@ const passport = require('passport');
 
 module.exports = app => {
 var fitbitAuthenticate = passport.authenticate('fitbit', {
-    successRedirect: '/auth/fitbit/success',
-    failureRedirect: '/auth/fitbit/failure'
+    scope: ['activity','heartrate','location','profile']
   });
   
   app.get('/auth/fitbit', fitbitAuthenticate);
-  app.get('/auth/fitbit/callback', fitbitAuthenticate);
+  app.get('/auth/fitbit/callback', passport.authenticate('fitbit', {
+    successRedirect: '/auth/fitbit/success',
+    failureRedirect: '/auth/fitbit/failure'
+  }));
   
   app.get('/auth/fitbit/success', function(req, res, next) {
     res.send(req.user);

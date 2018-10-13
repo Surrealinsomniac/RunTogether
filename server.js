@@ -1,18 +1,18 @@
 const express = require('express');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
 const cookieSession = require('cookie-session');
+require('./models/User');
 const passport = require('passport');
-// const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 //There is no function that is exported from passport.js but we need the whole passport.js file.
 require('./controllers/passport');
+
 var app = express();
 
 //mongoose connecting remotely hosted mongoDB on MLab to Node/Express server
-// mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI);
 
 app.use(cookieParser());
 
