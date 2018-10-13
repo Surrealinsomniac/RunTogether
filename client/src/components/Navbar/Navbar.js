@@ -7,9 +7,11 @@ const Navbar = props => (
     <div className="nav-wrapper black-text">
       <a className="brand-logo black-text">RunTogether</a>
       <ul className="black-text right hide-on-med-and-down" id="nav-mobile" >
-        <li className="black-text"><a href="/group">Groups</a></li>
-        <li className="black-text"><a href="/area">Area</a></li>
-        <li className="black-text"><a href="/dashboard">Profile</a></li>
+        <li><a className="black-text" href="/group">Groups</a></li>
+        <li> | </li>
+        <li><a className="black-text" href="/area">Area</a></li>
+        <li> | </li>
+        <li><a className="black-text" href="/dashboard">Profile</a></li>
       </ul>
     </div>
   </nav>
