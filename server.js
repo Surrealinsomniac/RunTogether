@@ -1,20 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
-require('./models/User');
 const passport = require('passport');
+var bodyParser = require('body-parser');
 const keys = require('./config/keys');
-//There is no function that is exported from passport.js but we need the whole passport.js file.
-require('./controllers/passport');
+var cookieParser = require('cookie-parser');
 
-var app = express();
+require('./models/User');
+require('./controllers/passport');
 
 //mongoose connecting remotely hosted mongoDB on MLab to Node/Express server
 mongoose.connect(keys.mongoURI);
 
-app.use(cookieParser());
+var app = express();
+require('./routes/authRoutes')(app);
 
 //tell express to use body parser middlewear. rec.body property will be assigned and then the information within the json object could be accessed anywhere in the app.
 app.use(bodyParser.json());
@@ -28,13 +27,14 @@ app.use(
   })
 );
 app.use(passport.initialize());
-app.use(passport.session({
-  resave: false,
-  saveUninitialized: true
-}));
+// app.use(passport.session({
+//   resave: false,
+//   saveUninitialized: true
+// } 
+// ));
 
 //Valid javascript to require the function imported from another file and then to imediately invoking the app object.
-require('./routes/authRoutes')(app);
+
 
 if(process.env.NODE_ENV ==='production'){
   //express will serve up production assets
