@@ -1,6 +1,8 @@
 .friend-list {
     padding: 0px; 
-    margin-top: 30px;  
+    margin-top: 30px;
+    margin-right: 20px !important;
+    margin-left: 10px;  
 }
 .friend-tile {
     margin-top: 0px !important;

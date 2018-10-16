@@ -11,7 +11,6 @@ class Friendlist extends Component {
 
     render() {
         return(
-            <div className="row">
                 <div className="col s12 m12">
                     <div className="friend-list">
                         {this.state.friends.map(friend => (
@@ -25,9 +24,8 @@ class Friendlist extends Component {
                         ))}
                     </div>
                 </div>
-            </div>
-        )
-    }
+        );
+    };
 };
 
 export default Friendlist;

@@ -1,0 +1,8 @@
+.rowC {
+    display:flex; 
+}
+.placeholder {
+    background-color: azure;
+    width: 800px;
+    height: 400px;
+}
