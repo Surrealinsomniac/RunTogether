@@ -5,8 +5,14 @@ const { Schema } = mongoose;
 //a Schema allows mongoose to define which properties each user will have.
 //Add or delete properties to the userSchema as necessary
 const userSchema = new Schema({
-    googleId: String,
-    credits: {type: Number, default: 0}
+    fitbitId: String,
+    displayName: String,
+    age: Number,
+    avgDailySteps: Number
+
 });
+ mongoose.model('users', userSchema)
 //This creates a mongoose class model therefore creating a collection in mongoDB. model is a built in mongoose function.
-mongoose.model('users', userSchema);
+// mongoose.model('users', userSchema);
+// module.exports = User;
+

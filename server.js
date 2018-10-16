@@ -1,40 +1,52 @@
 const express = require('express');
-// const mongoose = require('mongoose');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
+const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-// const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 const keys = require('./config/keys');
-//There is no function that is exported from passport.js but we need the whole passport.js file.
+var cookieParser = require('cookie-parser');
+
+require('./models/User');
 require('./controllers/passport');
-var app = express();
+
+
 
 //mongoose connecting remotely hosted mongoDB on MLab to Node/Express server
-// mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI);
 
-app.use(cookieParser());
+var app = express();
 
 //tell express to use body parser middlewear. rec.body property will be assigned and then the information within the json object could be accessed anywhere in the app.
 app.use(bodyParser.json());
 
 //tell app to use cookies for sessions.
-app.use(
-  cookieSession({
-    //how long this cookie can live in the browser before it expires. In this case, 30 days.
-    maxAge: 30*24*60*60*1000,
-    keys: [keys.cookieKey]
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session({
-  resave: false,
-  saveUninitialized: true
+// app.use(
+//   cookieSession({
+//     //how long this cookie can live in the browser before it expires. In this case, 30 days.
+//     maxAge: 30*24*60*60*1000,
+//     keys: [keys.cookieKey]
+//   })
+// );
+app.use(require('express-session')({
+  secret: 'crackalackin',
+  resave: true,
+  saveUninitialized: true,
+  cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }, // 4 hours
 }));
 
-//Valid javascript to require the function imported from another file and then to imediately invoking the app object.
+app.use(passport.initialize());
+
 require('./routes/authRoutes')(app);
+// app.use(passport.session({
+//   resave: false,
+//   saveUninitialized: true
+// } 
+// ));
+
+
+
+//Valid javascript to require the function imported from another file and then to imediately invoking the app object.
+
 
 if(process.env.NODE_ENV ==='production'){
   //express will serve up production assets
