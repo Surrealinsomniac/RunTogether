@@ -5,8 +5,6 @@ import Usertile from "../../components/Usertile";
 import Friendlist from "../../components/Friendlist";
 import Competitiontile from "../../components/Competitiontile";
 
-
-
 class Dashboard extends Component {
 
     render() {
