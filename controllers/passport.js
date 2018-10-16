@@ -1,29 +1,55 @@
-var FitbitStrategy = require( 'passport-fitbit-oauth2' ).FitbitOAuth2Strategy;;
-var passport = require('passport');
-const keys = require('../config/keys');
+var passport = require("passport");
+var FitbitStrategy = require("passport-fitbit-oauth2").FitbitOAuth2Strategy;
+const mongoose = require("mongoose");
+const keys = require("../config/keys");
+const User = mongoose.model('users');
+// const User = require("../models/User");
+// require("https").globalAgent.options.rejectUnauthorized = false;
 
-var fitbitStrategy = new FitbitStrategy({
-  clientID: keys.fitbit_client_id,
-  clientSecret: keys.fitbit_client_secret,
-  scope: ['activity','heartrate','location','profile'],
-  callbackURL: "http://localhost:5000/auth/fitbit/callback"
-}, function(accessToken, refreshToken, profile, done) {
-  // TODO: save accessToken here for later use
-
-  done(null, {
-    accessToken: accessToken,
-    refreshToken: refreshToken,
-    profile: profile
+passport.serializeUser((user, done) => {
+    console.log("serializeUser", user.id)
+    done(null, user.id);
   });
 
-});
+  passport.deserializeUser((user, done) => {
+      User.findById(user.id).then(user => {
+        console.log("deserialize user here", user)
+        done(null, user);
+      });
+  });
 
-passport.use(fitbitStrategy);
+ passport.use(new FitbitStrategy(
+    {
+      clientID: keys.fitbit_client_id,
+      clientSecret: keys.fitbit_client_secret,
+      callbackURL: 'http://localhost:5000/auth/fitbit/callback',
+      proxy: true
+    },
+    function (accessToken, refreshToken, profile, done) {
+        // console.log(profile)
+        // console.log(accessToken)
+      User.findOne({ fitbitId: profile.id }).then(currentUser => {
+        if (currentUser) {
+        //   console.log("user is", currentUser);
+         return done(null, currentUser)
+        } else {
+          new User({
+            fitbitId: profile.id,
+            displayName: profile.displayName,
+            age: profile._json.user.age,
+            avgDailySteps: profile._json.user.averageDailySteps
+          })
+            .save()
+            .then(newUser => {
+            //   console.log("new user created" + newUser);
+              done(null, newUser)
+            });
+            // console.log("access token", accessToken);
+            // console.log("refresh token ", refreshToken);
+            // console.log("profile:", profile);
+        }
+      });
+    }
+));
+ 
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
