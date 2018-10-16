@@ -1,8 +1,16 @@
-.rowC {
+.rowA {
     display:flex; 
 }
-.placeholder {
-    background-color: azure;
-    width: 800px;
-    height: 400px;
+.rowB {
+    display: flex;
+    position: relative;
+    bottom: 100px;
+    left: 25px;
+}
+.rowC {
+    display: flex;
+    position: relative;
+    top: 350px;
+    right: 795px;
+
 }

@@ -11,7 +11,7 @@ class Friendlist extends Component {
 
     render() {
         return(
-                <div className="col s12 m12">
+                <div className="col s13 m13">
                     <div className="friend-list">
                         {this.state.friends.map(friend => (
                             <div className="friend-tile">
