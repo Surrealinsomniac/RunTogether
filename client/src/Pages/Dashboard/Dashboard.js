@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Wrapper from "../../components/Wrapper";
 import Usertile from "../../components/Usertile";
 
-
-
 class Dashboard extends Component {
 
     render() {
