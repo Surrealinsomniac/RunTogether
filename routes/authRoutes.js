@@ -46,12 +46,15 @@ var fitbitAuthenticate = passport.authenticate('fitbit', {failWithError: true,
     // req.session = null 
     // req.session.destroy();
     req.logout();
-    req.session.destroy()
+    req.session.destroy((err)=>{
+      console.log("Session destroy error", err);
+      res.redirect('/');
+    })
     console.log("SESSION after logout", req.session)
     console.log("session store after logout", req.sessionStore)
     console.log("session ID after logout", req.sessionID)
     // res.clearCookie(keys.cookieKey);
-    res.redirect('/');
+    
     console.log('====================================');
     console.log("logged out");
     console.log('====================================');

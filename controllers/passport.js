@@ -26,7 +26,7 @@ passport.serializeUser((user, done) => {
       proxy: true
     },
     function (accessToken, refreshToken, profile, done) {
-        // console.log(profile)
+        console.log(profile)
         // console.log(accessToken)
       User.findOne({ fitbitId: profile.id }).then(currentUser => {
         if (currentUser) {
