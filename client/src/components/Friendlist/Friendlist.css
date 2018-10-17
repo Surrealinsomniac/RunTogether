@@ -1,10 +1,11 @@
 .friend-list {
     padding: 0px; 
     margin-top: 30px;
-    margin-right: 20px !important;
+    margin-right: 10px !important;
     margin-left: 10px;  
 }
 .friend-tile {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
+    width: 275px !important;
 }

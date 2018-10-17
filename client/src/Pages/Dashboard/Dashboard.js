@@ -4,8 +4,11 @@ import Wrapper from "../../components/Wrapper";
 import Usertile from "../../components/Usertile";
 import Friendlist from "../../components/Friendlist";
 import Competitiontile from "../../components/Competitiontile";
+import Stattracker from "../../components/Stattracker";
+import graph from "../../FitBitExample.json";
 
 class Dashboard extends Component {
+
 
     render() {
         return (
@@ -17,13 +20,21 @@ class Dashboard extends Component {
                     weekly="40"
                     />
                 </div>
-                <div className="rowC">
+                <div className="rowA">
                     <Friendlist />
-                    <div className="placeholder">
-                    </div>
-                    <Competitiontile 
-                    data="100"
-                    />
+                        <div className="rowB">
+                            <Stattracker 
+                             data = {graph}
+                            />
+                        </div>
+                        <div className="rowC">
+                            <Competitiontile 
+                             first="200"
+                             second="100"
+                             third="50"
+                             user="25"
+                            />
+                        </div>
                 </div>
             </Wrapper>
         );
