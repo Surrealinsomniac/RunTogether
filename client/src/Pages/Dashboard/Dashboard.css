@@ -1,0 +1,16 @@
+.rowA {
+    display:flex; 
+}
+.rowB {
+    display: flex;
+    position: relative;
+    bottom: 100px;
+    left: 25px;
+}
+.rowC {
+    display: flex;
+    position: relative;
+    top: 550px;
+    right: 795px;
+
+}
