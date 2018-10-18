@@ -3,18 +3,18 @@ var FitbitStrategy = require("passport-fitbit-oauth2").FitbitOAuth2Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
 const User = mongoose.model('users');
-// const User = require("../models/User");
-// require("https").globalAgent.options.rejectUnauthorized = false;
+const Session = mongoose.model('sessions');
 
-passport.serializeUser((user, done) => {
-    console.log("serializeUser", user.id)
-    done(null, user.id);
+passport.serializeUser((session, done) => {
+    console.log("serializeUser", session)
+    done(null, session.id);
   });
 
-  passport.deserializeUser((user, done) => {
-      User.findById(user.id).then(user => {
-        console.log("deserialize user here", user)
-        done(null, user);
+  passport.deserializeUser((sessionId, done) => {
+      console.log("deserialize user here", sessionId)
+      Session.findById(sessionId).then(session => {
+        console.log("Session found", session)
+        done(null, session);
       });
   });
 
@@ -26,12 +26,17 @@ passport.serializeUser((user, done) => {
       proxy: true
     },
     function (accessToken, refreshToken, profile, done) {
+      // Create new Session object
+      // Session object should have user id an
         console.log(profile)
         // console.log(accessToken)
       User.findOne({ fitbitId: profile.id }).then(currentUser => {
         if (currentUser) {
         //   console.log("user is", currentUser);
-         return done(null, currentUser)
+        Session.create({ fitbitId: currentUser.fitbitId, accessToken: accessToken})
+        .then(session => {
+          done(null, session);
+        });
         } else {
           new User({
             fitbitId: profile.id,
@@ -42,7 +47,11 @@ passport.serializeUser((user, done) => {
             .save()
             .then(newUser => {
             //   console.log("new user created" + newUser);
-              done(null, newUser)
+              Session.create({ fitbitId: newUser.fitbitId, accessToken: accessToken})
+              .then(session => {
+                done(null, session);
+              });
+              
             });
             // console.log("access token", accessToken);
             // console.log("refresh token ", refreshToken);

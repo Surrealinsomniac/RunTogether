@@ -7,6 +7,7 @@ const keys = require('./config/keys');
 var cookieParser = require('cookie-parser');
 
 require('./models/User');
+require('./models/Session')
 require('./controllers/passport');
 
 
@@ -35,9 +36,10 @@ app.use(require('express-session')({
 }));
 
 app.use(passport.initialize());
-
-require('./routes/authRoutes')(app);
 app.use(passport.session());
+require('./routes/authRoutes')(app);
+require('./routes/activityRoute')(app);
+
 //   resave: false,
 //   saveUninitialized: true
 // } 

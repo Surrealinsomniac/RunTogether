@@ -1,4 +1,6 @@
 const passport = require('passport');
+const mongoose = require("mongoose");
+const Session = mongoose.model('sessions');
 // const keys = require('../config/keys');
 
 
@@ -45,11 +47,16 @@ var fitbitAuthenticate = passport.authenticate('fitbit', {failWithError: true,
   console.log("session ID before logout", req.sessionID)
     // req.session = null 
     // req.session.destroy();
-    req.logout();
-    req.session.destroy((err)=>{
-      console.log("Session destroy error", err);
-      res.redirect('/');
+    Session.findById(req.user.id).remove(()=> {
+      req.session.destroy((err)=>{
+        console.log("Session destroy error", err);
+        req.logout();
+        res.redirect('/');
+      })
     })
+   
+   
+    
     console.log("SESSION after logout", req.session)
     console.log("session store after logout", req.sessionStore)
     console.log("session ID after logout", req.sessionID)
@@ -63,6 +70,7 @@ var fitbitAuthenticate = passport.authenticate('fitbit', {failWithError: true,
 
     //this is a route handler for current user.
     app.get('/api/current_user', (req, res)=>{
+      console.log(req.user)
         res.send(req.user);
         console.log(req._passport.session.user);
     });
