@@ -7,11 +7,16 @@ import Competitiontile from "../../components/Competitiontile";
 import Stattracker from "../../components/Stattracker";
 import month from "../../json/FitBitMonth.json";
 import week from "../../json/FitBitWeek.json";
+import day from "../../json/FitBitDaily.json";
 
 class Dashboard extends Component {
 
     state = {
         data: month
+    }
+
+    getDay = () => {
+        this.setState({ data: day })
     }
 
     getMonth = () => {
@@ -39,6 +44,7 @@ class Dashboard extends Component {
                              data = {this.state.data}
                              getMonth = {this.getMonth}
                              getWeek = {this.getWeek}
+                             getDay = {this.getDay}
                             />
                         </div>
                         <div className="rowC">
