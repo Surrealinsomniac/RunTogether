@@ -1,0 +1,10 @@
+.groupheader {
+    width: 800px;
+    height: 300px;
+    padding-top: 80px;
+    padding-left: 80px;
+}
+.group-title {
+    font-size: 40px !important;
+    margin-bottom: 30px !important;
+}

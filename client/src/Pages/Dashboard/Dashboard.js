@@ -40,12 +40,15 @@ class Dashboard extends Component {
                 <div className="rowA">
                     <Friendlist />
                         <div className="rowB">
-                            <Stattracker 
-                             data = {this.state.data}
-                             getMonth = {this.getMonth}
-                             getWeek = {this.getWeek}
-                             getDay = {this.getDay}
-                            />
+                        <Stattracker 
+                            data = {this.state.data}
+                            getMonth = {this.getMonth}
+                            getWeek = {this.getWeek}
+                            getDay = {this.getDay}
+                            daily = {day}
+                            week = {week}
+                            month = {month}
+                        />
                         </div>
                         <div className="rowC">
                             <Competitiontile 
