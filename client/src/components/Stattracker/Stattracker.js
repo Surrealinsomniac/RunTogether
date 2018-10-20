@@ -13,17 +13,17 @@ const Stattracker = props => (
         </LineChart>
     </div>
     <div className="divider"></div>
-  <div className="section">
+  <div className="section" onClick={props.getDay}>
     <h5>Today</h5>
     <p>numbers</p>
   </div>
   <div className="divider"></div>
-  <div className="section">
+  <div className="section" onClick={props.getWeek}>
     <h5>Week</h5>
     <p>numbers</p>
   </div>
   <div className="divider"></div>
-  <div className="section">
+  <div className="section" onClick={props.getMonth}>
     <h5>Month</h5>
     <p>numbers</p>
   </div>

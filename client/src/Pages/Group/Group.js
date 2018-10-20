@@ -1,17 +1,18 @@
 import React, {Component} from "react";
 import Stattracker from "../../components/Stattracker";
 import Wrapper from "../../components/Wrapper";
-import graph from "../../FitBitExample.json";
+import month from "../../json/FitBitMonth.json";
+
 
 class Group extends Component {
     state = {
-        graph
+        data: month
     };
     render() {
         return (
             <Wrapper>
                 <Stattracker 
-                    data = {this.state.graph}
+                    data = {this.state.data}
                 />
             </Wrapper>
         );
