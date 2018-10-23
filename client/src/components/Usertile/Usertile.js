@@ -4,10 +4,10 @@ import "./Usertile.css";
 const Usertile = props => (
     <div className="col s3 m3">
         <div className="card horizontal user-tile">
-            <div className="card-content">
-                <h5 className="name">{props.name}</h5>
-                <p className="stats">{props.total} || {props.weekly}</p>
-            </div>
+            <ul>
+                <li><h5 className="name">{props.name}</h5></li>
+                <li><p className="stats">{props.total} || {props.weekly}</p></li>
+            </ul>
         </div>
      </div>
 );
