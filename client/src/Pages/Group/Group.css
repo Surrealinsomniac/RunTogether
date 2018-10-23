@@ -1,0 +1,22 @@
+.row1 {
+    display: flex;
+    position: relative;
+    left: 150px;
+}
+.row2 {
+    display: flex;
+    position: relative;
+    top: 10px;
+}
+.row3 {
+    display: flex;
+    position: relative;
+    left: 300px;
+    top: -590px;
+}
+.row4 {
+    display: flex;
+    position: relative;
+    top: -575px;
+    left: 300px;
+}
