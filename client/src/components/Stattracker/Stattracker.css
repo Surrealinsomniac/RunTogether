@@ -1,6 +1,7 @@
 .stattracker-tile {
     width: 800px !important;
     height: 600px;
+    background-color: #edf9e3;
 }
 .chart {
     padding-top: 20px;
