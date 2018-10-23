@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Stattracker from "../../components/Stattracker";
-import Wrapper from "../../components/Wrapper";
 import Groupheader from "../../components/Groupheader";
 import Competitiontile from "../../components/Competitiontile";
 import Friendlist from "../../components/Friendlist";
@@ -27,7 +26,7 @@ class Group extends Component {
     };
     render() {
         return (
-            <Wrapper>
+            <div>
                 <div className="row1">
                 <Groupheader 
                     title="Run Atlanta"
@@ -56,7 +55,7 @@ class Group extends Component {
                     user="25"
                 />
                 </div>
-            </Wrapper>
+            </div>
         );
     };
 }

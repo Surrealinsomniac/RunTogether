@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
-import Wrapper from "../../components/Wrapper";
 import Usertile from "../../components/Usertile";
 import Friendlist from "../../components/Friendlist";
 import Competitiontile from "../../components/Competitiontile";
@@ -29,7 +28,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <Wrapper>
+            <div>
                 <div className="row">
                     <Usertile 
                     name="John Smith"
@@ -59,7 +58,7 @@ class Dashboard extends Component {
                             />
                         </div>
                 </div>
-            </Wrapper>
+            </div>
         );
     };
 };
