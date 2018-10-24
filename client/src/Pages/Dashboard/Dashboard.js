@@ -14,8 +14,19 @@ class Dashboard extends Component {
         data: month
     }
 
-    getDay = () => {
-        this.setState({ data: day })
+    componentDidMount(){
+        fetch("/api/activity/1m", {
+            method: "GET"
+        })
+        .then((res) => {
+            fetch("/db/stats", {
+                method: "POST",
+                body: res
+            })
+                .then((res) => {
+                    console.log(res);
+                }).catch((err) => console.log(err.stack));
+        })
     }
 
     getMonth = () => {
@@ -43,7 +54,6 @@ class Dashboard extends Component {
                             data = {this.state.data}
                             getMonth = {this.getMonth}
                             getWeek = {this.getWeek}
-                            getDay = {this.getDay}
                             daily = {day}
                             week = {week}
                             month = {month}

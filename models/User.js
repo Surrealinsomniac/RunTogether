@@ -8,7 +8,11 @@ const userSchema = new Schema({
     fitbitId: String,
     displayName: String,
     age: Number,
-    avgDailySteps: Number
+    avgDailySteps: Number,
+    stats: [{
+        type: Schema.Types.ObjectId,
+        ref: "stats"
+    }]
 
 });
  mongoose.model('users', userSchema)
