@@ -5,8 +5,10 @@ const passport = require('passport');
 var bodyParser = require('body-parser');
 const keys = require('./config/keys');
 var cookieParser = require('cookie-parser');
+const routes = require("./routes");
 
 require('./models/User');
+require('./models/Group');
 require('./controllers/passport');
 
 
@@ -35,6 +37,7 @@ app.use(require('express-session')({
 }));
 
 app.use(passport.initialize());
+app.use(routes);
 
 require('./routes/authRoutes')(app);
 // app.use(passport.session({
