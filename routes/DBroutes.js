@@ -1,4 +1,4 @@
-const Statscontroller = require("../controllers/StatsController.js")
+const Statscontroller = require("../controllers/StatsController.js");
 const  = require("express");
 const app = express();
 
