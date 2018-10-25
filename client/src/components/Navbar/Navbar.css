@@ -1,6 +1,14 @@
 nav {
-    background-color: #edf9e3;
-    color: black;
+    background-color: 
+    #fcd94a;
     padding-left: 30px;
-    padding-top: 15px;
+}
+.brand{
+    color: #222222 !important;
+    font-family: 'Francois One', sans-serif;
+}
+.rightBtn{
+    background-color: #222222;
+    border-radius: 40px;
+    font-family: 'Dosis', sans-serif;
 }

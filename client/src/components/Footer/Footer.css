@@ -1,4 +1,22 @@
 .page-footer {
-    background-color: #edf9e3;
-    color: black !important;
+    background-color: #222222;
+    color: white !important;
+}
+.description{
+    margin-left: 50px !important;
+}
+.footer-copyright{
+    margin-left: 50px;
+}
+.footer-github{
+    margin-right: 50px;
+}
+.creators{
+    text-align: right;
+    position: absolute;
+    margin-right: 0px;
+    margin-left: 64% !important;
+}
+h5{
+    color: #fcd94a;
 }

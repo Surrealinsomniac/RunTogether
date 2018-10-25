@@ -21,7 +21,7 @@ var fitbitAuthenticate = passport.authenticate('fitbit', {failWithError: true,
   
   app.get('/auth/fitbit/callback', passport.authenticate('fitbit'), 
     (req, res) => {
-        res.redirect('/auth/fitbit/success');
+        res.redirect('http://localhost:3000/dashboard');
     }
   );
 
@@ -70,9 +70,8 @@ var fitbitAuthenticate = passport.authenticate('fitbit', {failWithError: true,
 
     //this is a route handler for current user.
     app.get('/api/current_user', (req, res)=>{
-      console.log(req.user)
-        res.send(req.user);
-        console.log(req._passport.session.user);
+        req.user ? res.send(req.user) : res.status(401).send();
+        // console.log(req._passport.session.user);
     });
 };
 

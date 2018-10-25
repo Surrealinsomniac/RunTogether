@@ -1,0 +1,17 @@
+.imageDescription{
+    width: 80%;
+    margin-left: 0;
+    
+}
+.bob{
+    align-items: flex-start !important;
+}
+.Text{
+    margin-right: 16% !important; 
+}
+.centerMainText{
+    margin-left: 37% !important; 
+}
+.textField{
+    background-color: #efedee;
+}
