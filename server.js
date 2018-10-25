@@ -9,6 +9,7 @@ const routes = require("./routes");
 
 require('./models/User');
 require('./models/Group');
+require('./models/Session')
 require('./controllers/passport');
 
 
@@ -30,7 +31,7 @@ app.use(bodyParser.json());
 //   })
 // );
 app.use(require('express-session')({
-  secret: 'crackalackin',
+  secret: keys.cookieKey,
   resave: true,
   saveUninitialized: true,
   cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }, // 4 hours
@@ -39,8 +40,10 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(routes);
 
+app.use(passport.session());
 require('./routes/authRoutes')(app);
-// app.use(passport.session({
+require('./routes/activityRoute')(app);
+
 //   resave: false,
 //   saveUninitialized: true
 // } 

@@ -13,7 +13,7 @@ const userSchema = new Schema({
 });
 
 
- const User = mongoose.model('User', userSchema)
+ const User = mongoose.model('users', userSchema)
 //This creates a mongoose class model therefore creating a collection in mongoDB. model is a built in mongoose function.
 // mongoose.model('users', userSchema);
 module.exports = User;

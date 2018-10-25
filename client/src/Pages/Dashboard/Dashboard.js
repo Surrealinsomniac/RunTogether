@@ -1,18 +1,34 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
-import Wrapper from "../../components/Wrapper";
 import Usertile from "../../components/Usertile";
 import Friendlist from "../../components/Friendlist";
 import Competitiontile from "../../components/Competitiontile";
 import Stattracker from "../../components/Stattracker";
-import graph from "../../FitBitExample.json";
+import month from "../../json/FitBitMonth.json";
+import week from "../../json/FitBitWeek.json";
+import day from "../../json/FitBitDaily.json";
 
 class Dashboard extends Component {
 
+    state = {
+        data: month
+    }
+
+    getDay = () => {
+        this.setState({ data: day })
+    }
+
+    getMonth = () => {
+        this.setState({ data: month });
+    }
+
+    getWeek = () => {
+        this.setState({ data: week });
+    }
 
     render() {
         return (
-            <Wrapper>
+            <div>
                 <div className="row">
                     <Usertile 
                     name="John Smith"
@@ -23,9 +39,15 @@ class Dashboard extends Component {
                 <div className="rowA">
                     <Friendlist />
                         <div className="rowB">
-                            <Stattracker 
-                             data = {graph}
-                            />
+                        <Stattracker 
+                            data = {this.state.data}
+                            getMonth = {this.getMonth}
+                            getWeek = {this.getWeek}
+                            getDay = {this.getDay}
+                            daily = {day}
+                            week = {week}
+                            month = {month}
+                        />
                         </div>
                         <div className="rowC">
                             <Competitiontile 
@@ -36,7 +58,7 @@ class Dashboard extends Component {
                             />
                         </div>
                 </div>
-            </Wrapper>
+            </div>
         );
     };
 };

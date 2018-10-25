@@ -7,7 +7,7 @@ const { Schema } = mongoose;
 const groupSchema = new Schema({
     name: String,
     bio: String,
-    users: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    users: [{ type: Schema.Types.ObjectId, ref: 'users' }]
 });
 
 

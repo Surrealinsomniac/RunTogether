@@ -2,7 +2,7 @@ const router = require("express").Router();
 const groupController = require("../../controllers/group");
 
 
-router.route("/")
+router.route("api/groups/:id")
   .get(groupController.findUsers)
   .get(groupController.findById)
   .post(groupController.create);
