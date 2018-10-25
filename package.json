@@ -30,7 +30,6 @@
     "fs": "^0.0.1-security",
     "https-proxy-agent": "^2.2.1",
     "if-env": "^1.0.4",
-    "inspector": "^0.5.0",
     "mongoose": "^5.3.3",
     "passport": "^0.4.0",
     "passport-fitbit-oauth2": "^1.0.2",
