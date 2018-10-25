@@ -34,6 +34,7 @@ class App extends Component{
   //we are using connect component of react-redux to be able to call action creators
    componentDidMount(){
        this.props.fetchUser();
+       console.log(this.props.fetchUser());
   }
 
    render() {

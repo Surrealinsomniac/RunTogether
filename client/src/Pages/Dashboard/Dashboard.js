@@ -7,6 +7,7 @@ import Stattracker from "../../components/Stattracker";
 import month from "../../json/FitBitMonth.json";
 import week from "../../json/FitBitWeek.json";
 import day from "../../json/FitBitDaily.json";
+import { Session } from "inspector";
 
 class Dashboard extends Component {
 
@@ -14,20 +15,23 @@ class Dashboard extends Component {
         data: month
     }
 
-    componentDidMount(){
-        fetch("/api/activity/1m", {
-            method: "GET"
-        })
-        .then((res) => {
-            fetch("/db/stats", {
-                method: "POST",
-                body: res
-            })
-                .then((res) => {
-                    console.log(res);
-                }).catch((err) => console.log(err.stack));
-        })
-    }
+    // componentDidMount(){
+    //     fetch("https://api.fitbit.com/1/user/-/activities/distance/date/today/1m.json", {
+    //         method: "GET",
+    //         headers: {
+    //             //'Authorization': `Bearer ${Session.user.accessToken}`
+    //         }
+    //     })
+    //     .then((res) => {
+    //         fetch("/db/stats", {
+    //             method: "POST",
+    //             body: res
+    //         })
+    //             .then((res) => {
+    //                 console.log(res);
+    //             }).catch((err) => console.log(err.stack));
+    //     })
+    // }
 
     getMonth = () => {
         this.setState({ data: month });
