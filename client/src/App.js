@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 import Dashboard from "./Pages/Dashboard";
 import Group from "./Pages/Group";
-import Landing from "./Pages/Signin";
+import Signin from "./Pages/Signin";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
@@ -42,9 +42,9 @@ class App extends Component{
            //container className makes the form the size that it currently is
            <div>
               <BrowserRouter>
-                   <div className='container'>
+                   <div>
                       <Navbar/>
-                      <Route exact path = "/signin" component={Landing}/>
+                      <Route exact path = "/" component={Signin}/>
                       <Route exact path = "/dashboard" component={Dashboard}/>
                       <Route exact path = "/group" component={Group}/>
                       <Footer/>
