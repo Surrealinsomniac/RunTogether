@@ -21,7 +21,7 @@ var fitbitAuthenticate = passport.authenticate('fitbit', {failWithError: true,
   
   app.get('/auth/fitbit/callback', passport.authenticate('fitbit'), 
     (req, res) => {
-        res.redirect('/auth/fitbit/success');
+        res.redirect('http://localhost:3000/dashboard');
     }
   );
 

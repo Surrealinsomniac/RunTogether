@@ -5,21 +5,6 @@ import "./Navbar.css";
 
 class Header extends Component {
     renderContent(){
-        // switch (this.props.auth){
-        //     case null:
-        //         return;
-        //     case false:
-        //         return <li><a href = "/auth/fitbit">Login With Fitbit</a></li>;
-        //     default:
-        //         //an array that has a logout button and a pay with stripe button
-        //         return [
-        //             // <li key ="1"><Payments/></li>,
-        //             <li key ="3" style={{margin: '0 10px'}}>
-        //                 {/* Credits: {this.props.auth.credits} */}
-        //             </li>,
-        //             <li key ="2"><a href = "/api/logout">Logout</a></li>
-        //         ];
-        // }
         if (this.props.auth.isAuthenticated) {
           return <li key ="2"><a href = "/api/logout">Logout</a></li>
         } else if(this.props.auth.attemptingAuth) {
@@ -36,11 +21,11 @@ class Header extends Component {
                     <Link
                         //this ternary operators allows us to dynamically render where we get redirected to upon the click of the logo.
                         to = {this.props.auth ? '/dashboard' : '/'}
-                        className="left brand-logo"
+                        className="left brand-logo brand"
                     >
                         RunTogether
                     </Link>
-                    <ul className="right">
+                    <ul className="right rightBtn">
                         {/* referencing js in jsx, so we need curly brackets */}
                         {this.renderContent()}
                     </ul>
