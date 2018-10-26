@@ -14,10 +14,11 @@ module.exports = app => {
         }, (err, response, body) =>{
             // console.log("Error", err);
             // console.log("Response", response);
-            console.log("body", body)
+            // console.log("body", body)
+            res.send(body); 
         } );
-        // console.log(req.user)
-          res.send(req.user);
+        // console.log(req)
+        //   res.send(req.user);
         //   console.log(req._passport.session.user);
       });
 

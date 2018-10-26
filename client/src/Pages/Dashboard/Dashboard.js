@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
+import {fetch1dData} from '../../actions';
+import axios from 'axios';
+// import * as actions from './actions';
 import "./Dashboard.css";
 import Usertile from "../../components/Usertile";
 import Friendlist from "../../components/Friendlist";
@@ -10,23 +14,63 @@ import day from "../../json/FitBitDaily.json";
 
 class Dashboard extends Component {
 
-    state = {
-        data: month
-    }
+    componentDidMount(){
+        //THIS GETS THE DATA WE NEED BUT I CANT GET IT DOWN TO THE COMPONENT
+    //   this.data =  this.props.fetch1dData()
+    //     .then((res) => {return res.value.data.summary.distances[0]})
+        // THIS IS SUPPOSED TO WORK BUT DOESNT BECAUSE WHEN WE TRY TO MAP OVER PROPS, IT DOES NOT SEE ANY DATA. DATA COMES BACK UNDEFINED
+       this.props.fetch1dData();
+       console.log(this.props)
+    };
+  
 
-    getDay = () => {
-        this.setState({ data: day })
-    }
+    // state = {
+    //     data: month
+    // }
 
-    getMonth = () => {
-        this.setState({ data: month });
-    }
+    // getDay = () => {
+    //     this.setState({ data: day })
+    // }
 
-    getWeek = () => {
-        this.setState({ data: week });
-    }
+    // getMonth = () => {
+    //     this.setState({ data: month });
+    // }
 
+    // getWeek = () => {
+    //     this.setState({ data: week });
+    // }
+    // renderData(){
+    //     // console.log(data)
+    //     return this.props.data.map(data => {
+    //         return (
+    //             <div className="card darken-1" key={data.activities}>
+    //                 <div className="card-content">
+    //                     {/* <span className="card-title">{survey.title}</span>
+    //                     <p>
+    //                         {survey.body}
+    //                     </p>
+    //                     <p className="right">
+    //                         Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+    //                     </p>
+    //                 </div>
+    //                 <div className="card-action">
+    //                     <a>Yes: {survey.yes}</a>
+    //                     <a>No: {survey.no}</a> */}
+    //                 </div>
+    //             </div>
+    //         )
+    //     })
+    // }
+
+    // render() {
+    //     return (
+    //         <div>
+    //             {this.renderData()}
+    //         </div>
+    //     );
+    // }
     render() {
+       console.log(this.data)
         return (
             <div>
                 <div className="row">
@@ -39,7 +83,7 @@ class Dashboard extends Component {
                 <div className="rowA">
                     <Friendlist />
                         <div className="rowB">
-                        <Stattracker 
+                        {/* <Stattracker 
                             data = {this.state.data}
                             getMonth = {this.getMonth}
                             getWeek = {this.getWeek}
@@ -47,7 +91,7 @@ class Dashboard extends Component {
                             daily = {day}
                             week = {week}
                             month = {month}
-                        />
+                        /> */}
                         </div>
                         <div className="rowC">
                             <Competitiontile 
@@ -62,5 +106,7 @@ class Dashboard extends Component {
         );
     };
 };
-
-export default Dashboard;
+function mapStateToProps(state) {
+    return {data: state.data}
+}
+export default connect(mapStateToProps, {fetch1dData})(Dashboard);
