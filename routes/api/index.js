@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const groupRoutes = require("./groupRoutes");
 
-// Book routes
+// group; routes
 router.use("/groups", groupRoutes);
 
 module.exports = router;

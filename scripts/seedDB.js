@@ -4,15 +4,13 @@ const keys = require('../config/keys');
 
 // This file empties the Books collection and inserts the books below
 //keys.mongoURI
-mongoose.connect( process.env.MONGODB_URI ||
-  keys.mongoURI
-);
+mongoose.connect(keys.mongoURI);
 
 const groupSeed = [
     {
       name: "Park Runners",
       bio: "A group that likes to run the park at odd hours.  We like to run together so we don't get robbed.  Strength in numbers!",
-      users: ["5bcfc654b8ff125260dd5e16"]
+      users: []
     }
 ];
 const userSeed = [
