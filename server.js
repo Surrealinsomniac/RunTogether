@@ -9,7 +9,8 @@ const routes = require("./routes");
 
 require('./models/User');
 require('./models/Group');
-require('./models/Session')
+require('./models/Session');
+require("./models/Stats");
 require('./controllers/passport');
 
 

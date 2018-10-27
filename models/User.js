@@ -9,15 +9,15 @@ const userSchema = new Schema({
     displayName: String,
     age: Number,
     avgDailySteps: Number,
-<<<<<<< HEAD
+
     stats: [{
         type: Schema.Types.ObjectId,
         ref: "stats"
-    }]
+    }],
 
-=======
+
     group: [{ type: Schema.Types.ObjectId, ref: 'Group' }]
->>>>>>> 389480d7c3d4cf936f94813159da78b9dd226b4b
+
 });
 
 
