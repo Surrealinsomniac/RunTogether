@@ -16,6 +16,7 @@
     "react": "^16.5.2",
     "react-animated-slider": "^1.1.4",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.1.0",
     "react-responsive-carousel": "^3.1.43",
     "react-scripts": "1.1.5",
     "react-scroll-to-component": "^1.0.2",

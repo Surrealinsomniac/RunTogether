@@ -9,14 +9,20 @@ const userSchema = new Schema({
     displayName: String,
     age: Number,
     avgDailySteps: Number,
+<<<<<<< HEAD
     stats: [{
         type: Schema.Types.ObjectId,
         ref: "stats"
     }]
 
+=======
+    group: [{ type: Schema.Types.ObjectId, ref: 'Group' }]
+>>>>>>> 389480d7c3d4cf936f94813159da78b9dd226b4b
 });
- mongoose.model('users', userSchema)
+
+
+ const User = mongoose.model('users', userSchema)
 //This creates a mongoose class model therefore creating a collection in mongoDB. model is a built in mongoose function.
 // mongoose.model('users', userSchema);
-// module.exports = User;
+module.exports = User;
 
