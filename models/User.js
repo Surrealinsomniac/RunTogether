@@ -8,11 +8,13 @@ const userSchema = new Schema({
     fitbitId: String,
     displayName: String,
     age: Number,
-    avgDailySteps: Number
-
+    avgDailySteps: Number,
+    group: [{ type: Schema.Types.ObjectId, ref: 'Group' }]
 });
- mongoose.model('users', userSchema)
+
+
+ const User = mongoose.model('users', userSchema)
 //This creates a mongoose class model therefore creating a collection in mongoDB. model is a built in mongoose function.
 // mongoose.model('users', userSchema);
-// module.exports = User;
+module.exports = User;
 
