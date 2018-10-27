@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
-const Stats = require("../models/Stats.js");
+const db = require("../models");
 
 module.exports = {
     create: function (req, res) {
-        Stats
+        db.Stats
             .create(req.body)
+            .then(dbModel => res.json(dbModel))
+            console.log(dbModel)
             .catch(err => res.status(422).json(err));
     },
 }

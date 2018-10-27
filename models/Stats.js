@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const statsSchema = new Schema({
-    month: Array,
+    stats: Array,
     
     date: {
         created: { type: Date, default: Date.now }

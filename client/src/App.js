@@ -33,8 +33,7 @@ class App extends Component{
   //once the component has mounted, check if the use is signed in
   //we are using connect component of react-redux to be able to call action creators
    componentDidMount(){
-       this.props.fetchUser();
-       console.log(this.props.fetchUser());
+        this.props.fetchUser();
   }
 
    render() {
