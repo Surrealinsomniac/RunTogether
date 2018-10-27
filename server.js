@@ -43,6 +43,7 @@ app.use(routes);
 app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/activityRoute')(app);
+require("./routes/DBroutes")(app);
 
 //   resave: false,
 //   saveUninitialized: true

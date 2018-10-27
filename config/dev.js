@@ -5,4 +5,5 @@ module.exports={
     fitbit_client_id: "22D93B",
     cookieKey: 'hdsvilefwaifcdhbslfcbwfyvuyasvdyatcduaywfyeqqtysgvhjasddau',
     mongoURI: 'mongodb://sofya:password1991@ds131763.mlab.com:31763/irun-dev'
+    // mongoURI: "mongodb://localhost/runTogetherdb";
 }

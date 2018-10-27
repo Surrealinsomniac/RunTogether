@@ -1,4 +1,5 @@
 const request = require('request');
+const Statscontroller = require("../controllers/StatsController.js");
 
 module.exports = app => {
 
@@ -51,6 +52,8 @@ module.exports = app => {
 //     //   console.log(req._passport.session.user);
 //   });
   app.get('/api/activity/:activityLength', (req, res)=>{
+    //   console.log("richard is dumb" + req.user)
+      let user = req.user
     //activity for 1 month
     if (/[1m|1w]/.test(req.params.activityLength)) {
         const { activityLength } = req.params;
@@ -60,10 +63,17 @@ module.exports = app => {
         headers: {
             'Authorization': `Bearer ${req.user.accessToken}`
         }
-    }, (err, response, body) =>{
-        // console.log("Error", err);
-        // console.log("Response", response);
-        console.log("body", body)
+    }, (err, response, body) => {
+        let parsedBody = JSON.parse(body);
+        let userStats = {
+            stats: parsedBody["activities-distance"],
+            user: user._id
+        };
+            console.log(Statscontroller);
+            console.log(userStats)
+            Statscontroller.create(userStats)
+                .catch((err) => res.status(405));
+
     } );
     // console.log(req.user)
       res.send(req.user);

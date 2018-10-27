@@ -11,6 +11,7 @@ import Stattracker from "../../components/Stattracker";
 import month from "../../json/FitBitMonth.json";
 import week from "../../json/FitBitWeek.json";
 import day from "../../json/FitBitDaily.json";
+//import { Session } from "inspector";
 
 class Dashboard extends Component {
 
@@ -28,9 +29,16 @@ class Dashboard extends Component {
     //     data: month
     // }
 
+<<<<<<< HEAD
     // getDay = () => {
     //     this.setState({ data: day })
     // }
+=======
+    componentDidMount(){
+        
+        
+    }
+>>>>>>> 0622713dc14b6571ebad96ca99a7ebe71b38c076
 
     // getMonth = () => {
     //     this.setState({ data: month });
@@ -87,7 +95,6 @@ class Dashboard extends Component {
                             data = {this.state.data}
                             getMonth = {this.getMonth}
                             getWeek = {this.getWeek}
-                            getDay = {this.getDay}
                             daily = {day}
                             week = {week}
                             month = {month}
