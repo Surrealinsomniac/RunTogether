@@ -1,5 +1,6 @@
 const request = require('request');
 const Statscontroller = require("../controllers/StatsController.js");
+const db = require("../models");
 
 module.exports = app => {
 
@@ -68,10 +69,10 @@ module.exports = app => {
             stats: parsedBody["activities-distance"],
             user: user._id
         };
-            console.log(Statscontroller);
             console.log(userStats)
-            Statscontroller.create(userStats)
-                .catch((err) => res.status(405));
+            db.Stats.create(userStats)
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
 
     } );
     // console.log(req.user)
