@@ -6,7 +6,7 @@ export const fetchUser = () => ({
   payload: axios.get("/api/current_user")
 });
 
-
+// 1DAY 
 export const fetch1DataRequest = () => ({
   type: "fetch1Data/REQUEST"
 });
@@ -31,28 +31,50 @@ export const fetch1dData = () => dispatch => {
 };
 
 
-
-export const fetchWeekMonthRequest = () => ({
-  type: "fetchWeekMonth/REQUEST"
+// 1WEEK
+export const fetchWeekRequest = () => ({
+  type: "fetchWeek/REQUEST"
 });
 
-export const fetchWeekMonthSuccess = data => ({
-  type: "fetchWeekMonth/SUCCESS",
+export const fetchWeekSuccess = data => ({
+  type: "fetchWeek/SUCCESS",
   data
 });
 
-export const fetchWeekMonthFailure = error => ({
-  type: "fetchWeekMonth/FAILURE",
+export const fetchWeekFailure = error => ({
+  type: "fetchWeek/FAILURE",
   error
 });
 
-// dispatch(fetch1wmData(1))
-export const fetch1wmData = (activityLength) => dispatch => {
-  dispatch(fetchWeekMonthRequest());
+export const fetch1wData = () => dispatch => {
+  dispatch(fetchWeekRequest());
 
   return axios
-    .get(`/api/activity/${activityLength}`)
-    .then(({ data }) => dispatch(fetchWeekMonthSuccess(data)))
-    .catch(err => dispatch(fetchWeekMonthFailure(err.response.data)));
+    .get("/api/activity/1w")
+    .then(({ data }) => dispatch(fetchWeekSuccess(data)))
+    .catch(err => dispatch(fetchWeekFailure(err.response.data)));
 };
 
+// 1MONTH
+export const fetchMonthRequest = () => ({
+  type: "fetchMonth/REQUEST"
+});
+
+export const fetchMonthSuccess = data => ({
+  type: "fetchMonth/SUCCESS",
+  data
+});
+
+export const fetchMonthFailure = error => ({
+  type: "fetchMonth/FAILURE",
+  error
+});
+
+export const fetch1mData = () => dispatch => {
+  dispatch(fetchMonthRequest());
+
+  return axios
+    .get("/api/activity/1m")
+    .then(({ data }) => dispatch(fetchMonthSuccess(data)))
+    .catch(err => dispatch(fetchMonthFailure(err.response.data)));
+};

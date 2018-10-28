@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
-import {fetch1dData, fetch1wmData} from '../../actions';
+import {fetch1dData, fetch1wData, fetch1mData} from '../../actions';
 import axios from 'axios';
 // import * as actions from './actions';
 import "./Dashboard.css";
@@ -20,14 +20,17 @@ class Dashboard extends Component {
     }
 
     componentDidMount(){
-       this.props.fetch1wmData('1w');
-        this.props.fetch1dData();
-       console.log(this.props)
+        this.props.fetch1mData(),
+        this.props.fetch1wData(),
+        this.props.fetch1dData(),
+        console.log(this.props)
     };
   
     renderData(){
 
        console.log("DATA", this.props.data)
+       console.log("1wDATA", this.props.activity1w)
+       console.log("1mDATA", this.props.activity1m)
             return (
                 <div className="card darken-1">
                     <div className="card-content">
@@ -90,15 +93,17 @@ class Dashboard extends Component {
 };
 function mapStateToProps(state) {
     return {
-        activity1wm: state.activity1wm,
-        data: state.activity1d
+        activity1w: state.activity1w,
+        data: state.activity1d,
+        activity1m: state.activity1m
     }
 }
 
 function mapDispatchToProps (dispatch) {
     return {
         fetch1dData: () => dispatch(fetch1dData()),
-        fetch1wmData: num => dispatch(fetch1wmData(num))
+        fetch1wData: () => dispatch(fetch1wData()),
+        fetch1mData: () => dispatch(fetch1mData())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
