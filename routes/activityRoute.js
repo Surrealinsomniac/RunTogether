@@ -1,5 +1,6 @@
 const request = require('request');
 const Statscontroller = require("../controllers/StatsController.js");
+const db = require("../models");
 
 module.exports = app => {
 
@@ -69,7 +70,6 @@ module.exports = app => {
             stats: parsedBody["activities-distance"],
             user: user._id
         };
-            console.log(Statscontroller);
             console.log(userStats)
             Statscontroller.create(req, res);
 
