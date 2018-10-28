@@ -70,9 +70,15 @@ module.exports = app => {
             stats: parsedBody["activities-distance"],
             user: user._id
         };
-            console.log(userStats)
-            Statscontroller.create(req, res);
-
+        console.log(userStats)
+        db.Stats.findOneAndUpdate({ user: userStats.user }, userStats  )
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+        // if (!data) {
+        //     db.Stats.create(userStats)
+        //     .then(data => console.log(data))
+        //     .catch(err => console.log(err));
+        // }
     } );
     // console.log(req.user)
       res.send(req.user);
