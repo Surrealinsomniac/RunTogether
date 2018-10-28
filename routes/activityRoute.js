@@ -71,8 +71,7 @@ module.exports = app => {
         };
             console.log(Statscontroller);
             console.log(userStats)
-            Statscontroller.create(userStats)
-                .catch((err) => res.status(405));
+            Statscontroller.create(req, res);
 
     } );
     // console.log(req.user)
