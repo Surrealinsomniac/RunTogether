@@ -28,22 +28,41 @@ class Dashboard extends Component {
     };
   
     renderData(){
-
-       console.log("DATA", this.props.data)
-       console.log("1wDATA", this.props.activity1w)
-       console.log("1mDATA", this.props.activity1m)
+       // console.log("daily data"  this.props.data.summary.distances)
+    //    console.log("DATA", this.props.data)
+    //    console.log("1wDATA", this.props.activity1w)
+    //    console.log("1mDATA", this.props.activity1m)
             return (
-                <div className="card darken-1">
-                    <div className="card-content">
-                        {this.props.data.summary && this.props.data.summary.distances.map((e, i) => {
-                            return (
-                                <div key={i}>
-                                   <h2>Activity: {e.activity}</h2>
-                                    <h2>Distance: {e.distance}</h2>
-                                </div>
-                            );
-                        })}
-                    </div>
+                <div>
+                <div className="rowA">
+                    <div className="card darken-1 daily-card">
+                        <div className="card-content">
+                            {this.props.data.summary && this.props.data.summary.distances.map((e, i) => {
+                                if (e.activity == "total"){e.activity = "Total"}
+                                if (e.activity == "tracker"){e.activity = "Tracker"}
+                                if (e.activity == "loggedActivities"){e.activity = "Logged Activities"}
+                                if (e.activity == "veryActive"){e.activity = "Very Active"}
+                                if (e.activity == "moderatelyActive"){e.activity = "Moderately Active"}
+                                if (e.activity == "lightlyActive"){e.activity = "Lightly Active"}
+                                if (e.activity == "sedentaryActive"){e.activity = "Sedentary Active"}
+                                console.log
+                                return (
+                                    
+                                    <p className="col md3 day-stats">{e.activity}: {e.distance} miles</p>
+                                    // <div key={i}>
+                                    //    <h2>Activity: {e.activity}</h2>
+                                    
+                                    //     <h2>Distance: {e.distance}</h2>
+                                    // </div>
+                                );
+                            })}
+                            </div>
+                        </div>
+                </div>
+           
+                <div className="rowB">
+                <Stattracker />
+                </div>
                 </div>
             )
         
