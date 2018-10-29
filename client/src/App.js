@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import './App.css';
 
+
 // const App = () => (
 //     <Router>
 //       <div>

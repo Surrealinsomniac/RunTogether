@@ -7,7 +7,7 @@ import "./Dashboard.css";
 import Usertile from "../../components/Usertile";
 import Friendlist from "../../components/Friendlist";
 import Competitiontile from "../../components/Competitiontile";
-// import Stattracker from "../../components/Stattracker";
+ import Stattracker from "../../components/Stattracker";
 // import month from "../../json/FitBitMonth.json";
 // import week from "../../json/FitBitWeek.json";
 // import day from "../../json/FitBitDaily.json";
@@ -52,6 +52,7 @@ class Dashboard extends Component {
         return (
             <div>
                 {this.renderData()}
+                <Stattracker></Stattracker>
             </div>
         );
     }
