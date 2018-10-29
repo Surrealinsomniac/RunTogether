@@ -8,6 +8,7 @@ import Signin from "./Pages/Signin";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
+import Users from "./components/Users/Users";
 import './App.css';
 
 // const App = () => (
@@ -46,6 +47,7 @@ class App extends Component{
                       <Route exact path = "/" component={Signin}/>
                       <Route exact path = "/dashboard" component={Dashboard}/>
                       <Route exact path = "/group" component={Group}/>
+                      <Route exact path="/users" component={Users} />
                       <Footer/>
                    </div>
               </BrowserRouter>

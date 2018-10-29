@@ -24,6 +24,8 @@ module.exports = app => {
   app.get('/api/activity/1w', (req, res)=>{
       let user = req.user
         const URL = `https://api.fitbit.com/1/user/-/activities/distance/date/today/1w.json`;
+        db.User.findOne({ fitbitId: user.fitbitId }).then(dbUser => {
+            console.log("DB USER", dbUser)
     request({
         url: URL,
         headers: {
@@ -42,27 +44,34 @@ module.exports = app => {
         .catch(err => console.log(err));
     } );
 });
+});
 
 app.get('/api/activity/1m', (req, res)=>{
       let user = req.user
         const URL = `https://api.fitbit.com/1/user/-/activities/distance/date/today/1m.json`;
-    request({
-        url: URL,
-        headers: {
-            'Authorization': `Bearer ${req.user.accessToken}`
-        }
-    }, (err, response, body) => {
-        console.log("1mBODY:", body)
-        res.send(body)
-        let parsedBody = JSON.parse(body);
-        let userStats = {
-            stats: parsedBody["activities-distance"],
-            user: user._id
-        };
-        console.log(userStats)
-        db.Stats.findOneAndUpdate({ user: userStats.user }, userStats  )
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
-    } );
+
+    db.User.findOne({ fitbitId: user.fitbitId }).then(dbUser => {
+        console.log("DB USER", dbUser)
+        console.log(user);
+        request({
+            url: URL,
+            headers: {
+                'Authorization': `Bearer ${req.user.accessToken}`
+            }
+        }, (err, response, body) => {
+            console.log("1mBODY:", body)
+            res.send(body)
+            let parsedBody = JSON.parse(body);
+            let userStats = {
+                stats: parsedBody["activities-distance"],
+                user: user._id
+            };
+            // console.log(userStats)
+            // db.Stats.findOneAndUpdate({ user: userStats.user }, userStats  )
+            // .then(data => console.log(data))
+            // .catch(err => console.log(err));
+        } );
+    });
+        
 });
 }

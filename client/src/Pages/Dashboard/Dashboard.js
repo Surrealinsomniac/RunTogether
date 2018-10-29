@@ -4,6 +4,7 @@ import {fetch1dData, fetch1wData, fetch1mData} from '../../actions';
 import axios from 'axios';
 // import * as actions from './actions';
 import "./Dashboard.css";
+import PeopleFilter from '../../components/PeopleSearch/PeopleSearch'
 import Usertile from "../../components/Usertile";
 import Friendlist from "../../components/Friendlist";
 import Competitiontile from "../../components/Competitiontile";
@@ -51,7 +52,9 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
+                <PeopleFilter/>
                 {this.renderData()}
+              
             </div>
         );
     }
