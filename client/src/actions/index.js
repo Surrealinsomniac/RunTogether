@@ -78,3 +78,27 @@ export const fetch1mData = () => dispatch => {
     .then(({ data }) => dispatch(fetchMonthSuccess(data)))
     .catch(err => dispatch(fetchMonthFailure(err.response.data)));
 };
+
+// User Search Query
+export const fetchUsersRequest = () => ({
+  type: "fetchUsers/REQUEST"
+});
+
+export const fetchUsersSuccess = data => ({
+  type: "fetchUsers/SUCCESS",
+  data
+});
+
+export const fetchUsersFailure = error => ({
+  type: "fetchUsers/FAILURE",
+  error
+});
+
+export const fetchUsers = (query) => dispatch => {
+  dispatch(fetchUsersRequest());
+
+  return axios
+    .get("/api/users", { params: { displayName: query }})
+    .then(({ data }) => dispatch(fetchUsersSuccess(data)))
+    .catch(err => dispatch(fetchUsersFailure(err.response.data)));
+};
