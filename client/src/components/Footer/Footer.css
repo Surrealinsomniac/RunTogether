@@ -1,6 +1,8 @@
 .page-footer {
     background-color: #222222;
     color: white !important;
+    position: relative;
+    top: 100px;
 }
 .description{
     margin-left: 50px !important;

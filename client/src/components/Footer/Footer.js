@@ -17,6 +17,7 @@ const Footer = props => (
                   <li>Sofya Howard: <a href="https://www.linkedin.com/in/sofya-howard/" target="_blank" rel="noopener noreferrer">linkedin</a> || <a href="https://github.com/sofyahoward" target="_blank" rel="noopener noreferrer">Github</a></li>
                   <li>James Meier: <a href="https://www.linkedin.com/in/james-meier-252961b7/" target="_blank" rel="noopener noreferrer">linkedin</a> || <a href="https://github.com/jamesMeier" target="_blank" rel="noopener noreferrer">Github</a></li>
                   <li>Richard Covington: <a href="https://www.linkedin.com/in/richard-covington-666063b9/" target="_blank" rel="noopener noreferrer">linkedin</a> || <a href="https://github.com/rnc2011" target="_blank" rel="noopener noreferrer">Github</a></li>
+                  <li>Rob Nestora: <a href="https://www.linkedin.com/in/robnestora/" target="_blank" rel="noopener noreferrer">linkedin</a> || <a href="https://github.com/robnestora/" target="_blank" rel="noopener noreferrer">Github</a></li>
                 </ul>
               </div>
         

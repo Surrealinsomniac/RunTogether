@@ -74,18 +74,12 @@ class Stattracker extends Component {
              <div className="stats-display">
                  <div className="divider"></div>
                     <div className="section numbers-display">
-                        <h5>Week</h5>
-                         <p>
-                    
-                        </p> 
+                        <h1>Week</h1>
                     </div> 
                   <div className="divider"></div>
                     <div className="section numbers-display">
-                        <h5>Month</h5>
-                         <p>
-                            
-                        </p> 
-                            </div>
+                        <h1 className="month">Month</h1> 
+                        </div>
                   </div> 
       </div>
    </div> 
