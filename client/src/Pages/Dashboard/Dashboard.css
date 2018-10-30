@@ -1,17 +1,23 @@
+.day-stats {
+    margin-bottom: 30px !important;
+    font-size: 20px !important;
+    margin-right: 10px !important;
+    margin-left: 30px !important;
+    display: inline-block;
+    
+}
+.daily-card {
+    width: 1000px !important;
+    background-color: #fcd94a;
+
+}
 .rowA {
-    display:flex;
-    margin-bottom: 500px; 
+    position: relative;
+    left: 200px;
+    top: 40x;
 }
 .rowB {
-    display: flex;
     position: relative;
-    bottom: 100px;
-    left: 25px;
-}
-.rowC {
-    display: flex;
-    position: relative;
-    top: 550px;
-    right: 795px;
-
+    left: 300px;
+    top: 60px;
 }
